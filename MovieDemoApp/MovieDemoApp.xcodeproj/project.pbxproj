@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		3DBD2C172CCDD47C0048AEE7 /* MovieDemoAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DBD2C162CCDD47C0048AEE7 /* MovieDemoAppApp.swift */; };
-		3DBD2C192CCDD47C0048AEE7 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DBD2C182CCDD47C0048AEE7 /* ContentView.swift */; };
 		3DBD2C1B2CCDD47D0048AEE7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3DBD2C1A2CCDD47D0048AEE7 /* Assets.xcassets */; };
 		3DBD2C1E2CCDD47D0048AEE7 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3DBD2C1D2CCDD47D0048AEE7 /* Preview Assets.xcassets */; };
 		3DBD2C282CCDD47D0048AEE7 /* MovieDemoAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DBD2C272CCDD47D0048AEE7 /* MovieDemoAppTests.swift */; };
@@ -17,6 +16,7 @@
 		3DBD2C432CCDD6CE0048AEE7 /* HomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DBD2C422CCDD6CE0048AEE7 /* HomeScreen.swift */; };
 		3DBD2C462CCDD97A0048AEE7 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DBD2C452CCDD97A0048AEE7 /* LoginView.swift */; };
 		3DBD2C482CCDDA770048AEE7 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DBD2C472CCDDA770048AEE7 /* SearchView.swift */; };
+		3DBD2C4B2CCDDBA60048AEE7 /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DBD2C4A2CCDDBA60048AEE7 /* AuthViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,7 +39,6 @@
 /* Begin PBXFileReference section */
 		3DBD2C132CCDD47C0048AEE7 /* MovieDemoApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MovieDemoApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3DBD2C162CCDD47C0048AEE7 /* MovieDemoAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDemoAppApp.swift; sourceTree = "<group>"; };
-		3DBD2C182CCDD47C0048AEE7 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		3DBD2C1A2CCDD47D0048AEE7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3DBD2C1D2CCDD47D0048AEE7 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		3DBD2C232CCDD47D0048AEE7 /* MovieDemoAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MovieDemoAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -50,6 +49,7 @@
 		3DBD2C422CCDD6CE0048AEE7 /* HomeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreen.swift; sourceTree = "<group>"; };
 		3DBD2C452CCDD97A0048AEE7 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		3DBD2C472CCDDA770048AEE7 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
+		3DBD2C4A2CCDDBA60048AEE7 /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,9 +100,9 @@
 		3DBD2C152CCDD47C0048AEE7 /* MovieDemoApp */ = {
 			isa = PBXGroup;
 			children = (
+				3DBD2C4A2CCDDBA60048AEE7 /* AuthViewModel.swift */,
 				3DBD2C422CCDD6CE0048AEE7 /* HomeScreen.swift */,
 				3DBD2C162CCDD47C0048AEE7 /* MovieDemoAppApp.swift */,
-				3DBD2C182CCDD47C0048AEE7 /* ContentView.swift */,
 				3DBD2C1A2CCDD47D0048AEE7 /* Assets.xcassets */,
 				3DBD2C1C2CCDD47D0048AEE7 /* Preview Content */,
 				3DBD2C452CCDD97A0048AEE7 /* LoginView.swift */,
@@ -267,7 +267,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3DBD2C482CCDDA770048AEE7 /* SearchView.swift in Sources */,
-				3DBD2C192CCDD47C0048AEE7 /* ContentView.swift in Sources */,
+				3DBD2C4B2CCDDBA60048AEE7 /* AuthViewModel.swift in Sources */,
 				3DBD2C172CCDD47C0048AEE7 /* MovieDemoAppApp.swift in Sources */,
 				3DBD2C462CCDD97A0048AEE7 /* LoginView.swift in Sources */,
 				3DBD2C432CCDD6CE0048AEE7 /* HomeScreen.swift in Sources */,

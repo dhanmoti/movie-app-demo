@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct HomeScreen: View {
+    @State private var showLogin = false
+    
     var body: some View {
         ScrollView { // Makes the entire screen scrollable
             VStack {
@@ -41,6 +43,7 @@ struct HomeScreen: View {
                     // Login Button
                     Button(action: {
                         // Login action here
+                        showLogin = true
                     }) {
                         Text("Login")
                             .frame(maxWidth: .infinity)
@@ -69,6 +72,9 @@ struct HomeScreen: View {
                 .padding(.bottom, 32)
             }
             .background(Color.white.edgesIgnoringSafeArea(.all))
+            .fullScreenCover(isPresented: $showLogin) {
+                LoginView()
+            }
         }
     }
 }

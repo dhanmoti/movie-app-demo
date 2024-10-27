@@ -9,6 +9,11 @@ import SwiftUI
 
 struct LoginView: View {
     @Environment(\.presentationMode) var presentationMode // Allows us to go back to the previous screen
+    
+    @State private var username = ""
+    @State private var password = ""
+    
+    @EnvironmentObject var authViewModel: AuthViewModel
 
     var body: some View {
         VStack {
@@ -43,11 +48,11 @@ struct LoginView: View {
 
             // Text Fields for Username and Password
             VStack(spacing: 16) {
-                TextField("Username", text: .constant("")) // Placeholder for username field
+                TextField("Username", text: $username) // Placeholder for username field
                     .textFieldStyle(RoundedBorderTextFieldStyle())
                     .padding(.horizontal)
 
-                SecureField("Password", text: .constant("")) // Placeholder for password field
+                SecureField("Password", text: $password) // Placeholder for password field
                     .textFieldStyle(RoundedBorderTextFieldStyle())
                     .padding(.horizontal)
             }
@@ -57,6 +62,8 @@ struct LoginView: View {
             // Login Button
             Button(action: {
                 // Login action here
+                authViewModel.login(username: username, password: password)
+                
             }) {
                 Text("Login")
                     .frame(maxWidth: .infinity)
@@ -67,6 +74,10 @@ struct LoginView: View {
             }
             .padding(.horizontal)
             .padding(.bottom, 16)
+            .alert(authViewModel.errorMessage,
+                   isPresented: $authViewModel.isFailed,
+                   actions: {})
+        
 
             // Sign Up Link
             HStack {
@@ -75,7 +86,7 @@ struct LoginView: View {
                     // Sign up action here
                 }) {
                     Text("Sign Up")
-                        .foregroundColor(Color("DarkSkyBlue")) 
+                        .foregroundColor(Color("DarkSkyBlue"))
                 }
             }
             .padding(.bottom, 32)
