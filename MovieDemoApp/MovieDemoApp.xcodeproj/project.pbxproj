@@ -14,6 +14,7 @@
 		3DBD2C282CCDD47D0048AEE7 /* MovieDemoAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DBD2C272CCDD47D0048AEE7 /* MovieDemoAppTests.swift */; };
 		3DBD2C322CCDD47D0048AEE7 /* MovieDemoAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DBD2C312CCDD47D0048AEE7 /* MovieDemoAppUITests.swift */; };
 		3DBD2C342CCDD47D0048AEE7 /* MovieDemoAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DBD2C332CCDD47D0048AEE7 /* MovieDemoAppUITestsLaunchTests.swift */; };
+		3DBD2C432CCDD6CE0048AEE7 /* HomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DBD2C422CCDD6CE0048AEE7 /* HomeScreen.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +45,7 @@
 		3DBD2C2D2CCDD47D0048AEE7 /* MovieDemoAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MovieDemoAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3DBD2C312CCDD47D0048AEE7 /* MovieDemoAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDemoAppUITests.swift; sourceTree = "<group>"; };
 		3DBD2C332CCDD47D0048AEE7 /* MovieDemoAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDemoAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		3DBD2C422CCDD6CE0048AEE7 /* HomeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreen.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +96,7 @@
 		3DBD2C152CCDD47C0048AEE7 /* MovieDemoApp */ = {
 			isa = PBXGroup;
 			children = (
+				3DBD2C422CCDD6CE0048AEE7 /* HomeScreen.swift */,
 				3DBD2C162CCDD47C0048AEE7 /* MovieDemoAppApp.swift */,
 				3DBD2C182CCDD47C0048AEE7 /* ContentView.swift */,
 				3DBD2C1A2CCDD47D0048AEE7 /* Assets.xcassets */,
@@ -259,6 +262,7 @@
 			files = (
 				3DBD2C192CCDD47C0048AEE7 /* ContentView.swift in Sources */,
 				3DBD2C172CCDD47C0048AEE7 /* MovieDemoAppApp.swift in Sources */,
+				3DBD2C432CCDD6CE0048AEE7 /* HomeScreen.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
