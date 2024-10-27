@@ -14,8 +14,16 @@ class AuthViewModel: ObservableObject {
     
     func login(username: String, password: String) {
         // Input validation here
+        if username.isEmpty {
+            isFailed = true
+            errorMessage = "Empty username!"
+        }
+        else if password.isEmpty {
+            isFailed = true
+            errorMessage = "Empty password!"
+        }
         // Handle Firebase or hardcoded login
-        if username == "VVVBB" && password == "@bcd1234" {
+        else if username == "VVVBB" && password == "@bcd1234" {
             isAuthenticated = true
         }
         else {
