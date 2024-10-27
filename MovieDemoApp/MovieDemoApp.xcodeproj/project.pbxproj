@@ -16,6 +16,7 @@
 		3DBD2C342CCDD47D0048AEE7 /* MovieDemoAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DBD2C332CCDD47D0048AEE7 /* MovieDemoAppUITestsLaunchTests.swift */; };
 		3DBD2C432CCDD6CE0048AEE7 /* HomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DBD2C422CCDD6CE0048AEE7 /* HomeScreen.swift */; };
 		3DBD2C462CCDD97A0048AEE7 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DBD2C452CCDD97A0048AEE7 /* LoginView.swift */; };
+		3DBD2C482CCDDA770048AEE7 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DBD2C472CCDDA770048AEE7 /* SearchView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +49,7 @@
 		3DBD2C332CCDD47D0048AEE7 /* MovieDemoAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDemoAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		3DBD2C422CCDD6CE0048AEE7 /* HomeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreen.swift; sourceTree = "<group>"; };
 		3DBD2C452CCDD97A0048AEE7 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		3DBD2C472CCDDA770048AEE7 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +106,7 @@
 				3DBD2C1A2CCDD47D0048AEE7 /* Assets.xcassets */,
 				3DBD2C1C2CCDD47D0048AEE7 /* Preview Content */,
 				3DBD2C452CCDD97A0048AEE7 /* LoginView.swift */,
+				3DBD2C472CCDDA770048AEE7 /* SearchView.swift */,
 			);
 			path = MovieDemoApp;
 			sourceTree = "<group>";
@@ -263,6 +266,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3DBD2C482CCDDA770048AEE7 /* SearchView.swift in Sources */,
 				3DBD2C192CCDD47C0048AEE7 /* ContentView.swift in Sources */,
 				3DBD2C172CCDD47C0048AEE7 /* MovieDemoAppApp.swift in Sources */,
 				3DBD2C462CCDD97A0048AEE7 /* LoginView.swift in Sources */,
