@@ -22,61 +22,65 @@ struct SearchView: View {
     }
 
     var body: some View {
-        VStack {
-            // Search Bar
-            TextField("Search movies...", text: $viewModel.searchText)
-                .padding(10)
-                .background(Color("DarkSkyBlue").opacity(0.1))
-                .cornerRadius(8)
-                .padding(.horizontal)
-                .onChange(of: viewModel.searchText) { newValue in
-                    if newValue.count < 3 {
-                        viewModel.infoMessage = "Please enter at least 3 characters."
-                    } else {
-                        viewModel.infoMessage = nil
-                        // Call search function here if needed
-                    }
-                }
-                .onSubmit {
-                    Task { await viewModel.searchMovies() }
-                }
-
-            // Info Label
-            if let message = viewModel.infoMessage {
-                Text(message)
-                    .font(.footnote)
-                    .foregroundColor(.red)
+        
+        NavigationStack {
+            VStack {
+                // Search Bar
+                TextField("Search movies...", text: $viewModel.searchText)
+                    .padding(10)
+                    .background(Color("DarkSkyBlue").opacity(0.1))
+                    .cornerRadius(8)
                     .padding(.horizontal)
-            }
-
-            // Movie Grid
-            ScrollView {
-                LazyVGrid(columns: columns, spacing: 16) {
-                    ForEach(viewModel.movies, id: \.id) { movie in
-                        NavigationLink(destination: MovieDetailView()) {
-                            ZStack(alignment: .bottom) {
-                                MoviePosterView(imageUrl: movie.posterUrl, posterWidth: posterWidth())
-
-                                // Background for the text to improve visibility
-                                Text(movie.title ?? "")
-                                    .font(.caption)
-                                    .lineLimit(1)
-                                    .padding(.horizontal, 8)
-                                    .padding(.vertical, 4)
-                                    .background(Color.black.opacity(0.7)) // Semi-transparent black background
-                                    .foregroundColor(.white)              // White text for contrast
-                                    .cornerRadius(4)
-                                    .padding(8) // Padding to position text slightly above the bottom edge
-                            }
-
+                    .onChange(of: viewModel.searchText) { newValue in
+                        if newValue.count < 3 {
+                            viewModel.infoMessage = "Please enter at least 3 characters."
+                        } else {
+                            viewModel.infoMessage = nil
+                            // Call search function here if needed
                         }
                     }
+                    .onSubmit {
+                        Task { await viewModel.searchMovies() }
+                    }
+
+                // Info Label
+                if let message = viewModel.infoMessage {
+                    Text(message)
+                        .font(.footnote)
+                        .foregroundColor(.red)
+                        .padding(.horizontal)
                 }
-                .padding(.horizontal)
-                .padding(.top, 16)
+
+                // Movie Grid
+                ScrollView {
+                    LazyVGrid(columns: columns, spacing: 16) {
+                        ForEach(viewModel.movies, id: \.id) { movie in
+                            NavigationLink(destination: MovieDetailView(viewModel: MovieDetailViewModel(movie: movie))) {
+                                ZStack(alignment: .bottom) {
+                                    MoviePosterView(imageUrl: movie.posterUrl, posterWidth: posterWidth())
+
+                                    // Background for the text to improve visibility
+                                    Text(movie.title ?? "")
+                                        .font(.caption)
+                                        .lineLimit(1)
+                                        .padding(.horizontal, 8)
+                                        .padding(.vertical, 4)
+                                        .background(Color.black.opacity(0.7)) // Semi-transparent black background
+                                        .foregroundColor(.white)              // White text for contrast
+                                        .cornerRadius(4)
+                                        .padding(8) // Padding to position text slightly above the bottom edge
+                                }
+
+                            }
+                        }
+                    }
+                    .padding(.horizontal)
+                    .padding(.top, 16)
+                }
             }
+            .background(Color.white.edgesIgnoringSafeArea(.all))
         }
-        .background(Color.white.edgesIgnoringSafeArea(.all))
+        
     }
 
     // Helper function to calculate poster width based on screen size
