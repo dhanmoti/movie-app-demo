@@ -12,22 +12,27 @@ class SearchViewModel: ObservableObject {
     @Published var movies: [MovieEntity] = []
     
     private var networkService: MovieNetworkService
-    init(networkService: MovieNetworkService = OMDBMovieNetworkService()) {
+    private var localDB: LocalDatabaseService
+    init(networkService: MovieNetworkService = OMDBMovieNetworkService(),
+         localDB: LocalDatabaseService = SQLightDBService()) {
+        
         self.networkService = networkService
+        self.localDB = localDB
     }
     
     func searchMovies() async {
         // Call OMDb API and store results in local database for offline support
         do {
             let newMovies = try await networkService.fetchMovies(query: searchText)
-            
+            localDB.saveMovies(newMovies)
             await MainActor.run { self.movies = newMovies }
-            
         }
         catch
         {
             await MainActor.run {  infoMessage = "Something went wrong! Please try again." }
+            await MainActor.run { self.movies = localDB.fetchMovies() }
         }
+        
         
         
     }

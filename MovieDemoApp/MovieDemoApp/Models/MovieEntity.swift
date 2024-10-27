@@ -18,7 +18,7 @@ struct MovieEntity {
     var genre: String? //comma separated values
     var otherRatings: [Rating]?
     
-    struct Rating: Hashable {
+    struct Rating: Hashable, Codable {
         var source: String
         var value: String? // value/total
     }
