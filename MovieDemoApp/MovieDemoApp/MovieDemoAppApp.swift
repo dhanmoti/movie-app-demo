@@ -9,9 +9,18 @@ import SwiftUI
 
 @main
 struct MovieDemoAppApp: App {
+    @StateObject var authViewModel = AuthViewModel()
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            if authViewModel.isAuthenticated {
+                SearchView()
+                    .environmentObject(authViewModel)
+            }
+            else {
+                HomeScreen()
+                    .environmentObject(authViewModel)
+            }
         }
     }
 }
