@@ -18,6 +18,8 @@
 		3DBD2C482CCDDA770048AEE7 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DBD2C472CCDDA770048AEE7 /* SearchView.swift */; };
 		3DBD2C4B2CCDDBA60048AEE7 /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DBD2C4A2CCDDBA60048AEE7 /* AuthViewModel.swift */; };
 		3DBD2C4F2CCDE3AB0048AEE7 /* AuthViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DBD2C4E2CCDE3AB0048AEE7 /* AuthViewModelTests.swift */; };
+		3DBD2C512CCDE4B10048AEE7 /* SecureStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DBD2C502CCDE4B10048AEE7 /* SecureStorage.swift */; };
+		3DBD2C542CCDE6240048AEE7 /* MockStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DBD2C532CCDE6240048AEE7 /* MockStorage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +54,8 @@
 		3DBD2C472CCDDA770048AEE7 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		3DBD2C4A2CCDDBA60048AEE7 /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
 		3DBD2C4E2CCDE3AB0048AEE7 /* AuthViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModelTests.swift; sourceTree = "<group>"; };
+		3DBD2C502CCDE4B10048AEE7 /* SecureStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecureStorage.swift; sourceTree = "<group>"; };
+		3DBD2C532CCDE6240048AEE7 /* MockStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockStorage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +113,7 @@
 				3DBD2C1C2CCDD47D0048AEE7 /* Preview Content */,
 				3DBD2C452CCDD97A0048AEE7 /* LoginView.swift */,
 				3DBD2C472CCDDA770048AEE7 /* SearchView.swift */,
+				3DBD2C502CCDE4B10048AEE7 /* SecureStorage.swift */,
 			);
 			path = MovieDemoApp;
 			sourceTree = "<group>";
@@ -124,6 +129,7 @@
 		3DBD2C262CCDD47D0048AEE7 /* MovieDemoAppTests */ = {
 			isa = PBXGroup;
 			children = (
+				3DBD2C522CCDE6180048AEE7 /* Mock */,
 				3DBD2C272CCDD47D0048AEE7 /* MovieDemoAppTests.swift */,
 				3DBD2C4E2CCDE3AB0048AEE7 /* AuthViewModelTests.swift */,
 			);
@@ -137,6 +143,14 @@
 				3DBD2C332CCDD47D0048AEE7 /* MovieDemoAppUITestsLaunchTests.swift */,
 			);
 			path = MovieDemoAppUITests;
+			sourceTree = "<group>";
+		};
+		3DBD2C522CCDE6180048AEE7 /* Mock */ = {
+			isa = PBXGroup;
+			children = (
+				3DBD2C532CCDE6240048AEE7 /* MockStorage.swift */,
+			);
+			path = Mock;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -269,6 +283,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3DBD2C512CCDE4B10048AEE7 /* SecureStorage.swift in Sources */,
 				3DBD2C482CCDDA770048AEE7 /* SearchView.swift in Sources */,
 				3DBD2C4B2CCDDBA60048AEE7 /* AuthViewModel.swift in Sources */,
 				3DBD2C172CCDD47C0048AEE7 /* MovieDemoAppApp.swift in Sources */,
@@ -281,6 +296,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3DBD2C542CCDE6240048AEE7 /* MockStorage.swift in Sources */,
 				3DBD2C4F2CCDE3AB0048AEE7 /* AuthViewModelTests.swift in Sources */,
 				3DBD2C282CCDD47D0048AEE7 /* MovieDemoAppTests.swift in Sources */,
 			);

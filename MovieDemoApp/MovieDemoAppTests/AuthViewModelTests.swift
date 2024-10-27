@@ -11,15 +11,18 @@ import XCTest
 final class AuthViewModelTests: XCTestCase {
 
     var viewModel: AuthViewModel!
+    var mockStorage: MockSecureStorage!
     
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
-        viewModel = AuthViewModel()
+        mockStorage = MockSecureStorage()
+        viewModel = AuthViewModel(storage: mockStorage)
     }
 
     override func tearDownWithError() throws {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
         viewModel = nil
+        mockStorage = nil
         super.tearDown()
     }
 
@@ -66,5 +69,19 @@ final class AuthViewModelTests: XCTestCase {
         XCTAssertEqual(viewModel.errorMessage, "Invalid Credentials! Please try agian.")
         XCTAssertFalse(viewModel.isAuthenticated)
     }
+    
+    // Test for successful login and storage
+       func testLogin_withValidCredentials_setsIsAuthenticatedAndSavesCredentials() {
+           viewModel.login(username: "VVVBB", password: "@bcd1234")
+           
+           XCTAssertTrue(viewModel.isAuthenticated)
+           XCTAssertFalse(viewModel.isFailed)
+           XCTAssertEqual(viewModel.errorMessage, "")
+           
+           // Verify that saveCredentials was called with the correct arguments
+           XCTAssertTrue(mockStorage.isSaveCredentialsCalled)
+           XCTAssertEqual(mockStorage.savedUsername, "VVVBB")
+           XCTAssertEqual(mockStorage.savedPassword, "@bcd1234")
+       }
 
 }

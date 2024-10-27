@@ -12,6 +12,11 @@ class AuthViewModel: ObservableObject {
     @Published var errorMessage = ""
     @Published var isFailed = false
     
+    private var storage: SecureStorage
+    init(storage: SecureStorage = KeychainSecureStorage()) {
+        self.storage = storage
+    }
+    
     func login(username: String, password: String) {
         // Input validation here
         if username.isEmpty {
@@ -24,6 +29,7 @@ class AuthViewModel: ObservableObject {
         }
         // Handle Firebase or hardcoded login
         else if username == "VVVBB" && password == "@bcd1234" {
+            storage.saveCredentials(username: username, password: password)
             isAuthenticated = true
         }
         else {
