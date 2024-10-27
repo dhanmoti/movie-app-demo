@@ -10,12 +10,14 @@ import SwiftUI
 @main
 struct MovieDemoAppApp: App {
     @StateObject var authViewModel = AuthViewModel()
+    @StateObject var searchVM = SearchViewModel()
     
     var body: some Scene {
         WindowGroup {
             if authViewModel.isAuthenticated {
                 SearchView()
                     .environmentObject(authViewModel)
+                    .environmentObject(searchVM)
             }
             else {
                 HomeScreen()

@@ -8,8 +8,7 @@
 import SwiftUI
 
 struct SearchView: View {
-    @State private var searchText = ""
-    @State private var infoMessage: String? = nil // Holds info or error messages
+    @EnvironmentObject var viewModel: SearchViewModel
 
     // Responsive columns based on device width
     var columns: [GridItem] {
@@ -25,22 +24,25 @@ struct SearchView: View {
     var body: some View {
         VStack {
             // Search Bar
-            TextField("Search movies...", text: $searchText)
+            TextField("Search movies...", text: $viewModel.searchText)
                 .padding(10)
                 .background(Color("DarkSkyBlue").opacity(0.1))
                 .cornerRadius(8)
                 .padding(.horizontal)
-                .onChange(of: searchText) { newValue in
+                .onChange(of: viewModel.searchText) { newValue in
                     if newValue.count < 3 {
-                        infoMessage = "Please enter at least 3 characters."
+                        viewModel.infoMessage = "Please enter at least 3 characters."
                     } else {
-                        infoMessage = nil
+                        viewModel.infoMessage = nil
                         // Call search function here if needed
                     }
                 }
+                .onSubmit {
+                    Task { await viewModel.searchMovies() }
+                }
 
             // Info Label
-            if let message = infoMessage {
+            if let message = viewModel.infoMessage {
                 Text(message)
                     .font(.footnote)
                     .foregroundColor(.red)
@@ -50,20 +52,24 @@ struct SearchView: View {
             // Movie Grid
             ScrollView {
                 LazyVGrid(columns: columns, spacing: 16) {
-                    ForEach(1..<21, id: \.self) { index in
-                        VStack {
-                            Image("PlaceholderImage") // Replace with movie poster image or URL
-                                .resizable()
-                                .scaledToFill()
-                                .frame(width: posterWidth(), height: posterWidth() * 3 / 2)
-                                .cornerRadius(8)
-                                .clipped()
+                    ForEach(viewModel.movies, id: \.id) { movie in
+                        NavigationLink(destination: MovieDetailView()) {
+                            ZStack(alignment: .bottom) {
+                                MoviePosterView(imageUrl: movie.posterUrl, posterWidth: posterWidth())
 
-                            Text("Movie Title \(index)") // Replace with movie title
-                                .font(.caption)
-                                .lineLimit(1)
+                                // Background for the text to improve visibility
+                                Text(movie.title ?? "")
+                                    .font(.caption)
+                                    .lineLimit(1)
+                                    .padding(.horizontal, 8)
+                                    .padding(.vertical, 4)
+                                    .background(Color.black.opacity(0.7)) // Semi-transparent black background
+                                    .foregroundColor(.white)              // White text for contrast
+                                    .cornerRadius(4)
+                                    .padding(8) // Padding to position text slightly above the bottom edge
+                            }
+
                         }
-                        .background(Color.blue)
                     }
                 }
                 .padding(.horizontal)
@@ -81,8 +87,8 @@ struct SearchView: View {
     }
 }
 
-struct SearchMovieScreenView_Previews: PreviewProvider {
-    static var previews: some View {
-        SearchView()
-    }
-}
+//struct SearchMovieScreenView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        SearchView()
+//    }
+//}
