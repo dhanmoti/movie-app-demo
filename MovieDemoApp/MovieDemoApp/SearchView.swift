@@ -55,7 +55,7 @@ struct SearchView: View {
                 ScrollView {
                     LazyVGrid(columns: columns, spacing: 16) {
                         ForEach(viewModel.movies, id: \.id) { movie in
-                            NavigationLink(destination: MovieDetailView(movie: movie)) {
+                            NavigationLink(destination: MovieDetailView(viewModel: MovieDetailViewModel(movie: movie))) {
                                 ZStack(alignment: .bottom) {
                                     MoviePosterView(imageUrl: movie.posterUrl, posterWidth: posterWidth())
 

@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct MovieDetailView: View {
-    let movie: MovieEntity
+    @ObservedObject var viewModel: MovieDetailViewModel
     
     var body: some View {
         ScrollView {
@@ -17,9 +17,9 @@ struct MovieDetailView: View {
                 ZStack(alignment: .top) {
                     GeometryReader { geometry in
                         ZStack(alignment: .bottomLeading) {
-                            MoviePosterView(imageUrl: movie.posterUrl, posterWidth: geometry.size.width)
+                            MoviePosterView(imageUrl: viewModel.movie.posterUrl, posterWidth: geometry.size.width)
                                 .clipped()
-                                .blur(radius: 20)
+                                .blur(radius: 10)
                                 .frame(height: 300)
                                 .mask(
                                     LinearGradient(gradient: Gradient(colors: [Color.black.opacity(0.8), Color.black.opacity(0)]), startPoint: .top, endPoint: .bottom)
@@ -35,7 +35,7 @@ struct MovieDetailView: View {
 
 
                     VStack(alignment: .leading) {
-                        MoviePosterView(imageUrl: movie.posterUrl, posterWidth: posterWidth())
+                        MoviePosterView(imageUrl: viewModel.movie.posterUrl, posterWidth: posterWidth())
                             .cornerRadius(8)
                             .shadow(radius: 4)
                             .padding(.top, 32)
@@ -49,8 +49,8 @@ struct MovieDetailView: View {
                 VStack(alignment: .leading, spacing: 32) {
                     // Star Rating and Value
                     HStack {
-                        StarRatingView(rating: 6.8) // Custom view for stars, replace with your implementation
-                        Text("6.8 / 10")
+                        StarRatingView(rating: viewModel.starRating) // Custom view for stars, replace with your implementation
+                        Text("\(viewModel.movie.imdbRating ?? "N/A") / 10")
                             .font(.subheadline)
                             .foregroundColor(Color("DarkSkyBlue"))
                     }
@@ -58,11 +58,11 @@ struct MovieDetailView: View {
 
                     // Title and Genre
                     VStack(alignment: .leading, spacing: 8) {
-                        Text(movie.title ?? "Untitled Movie")
+                        Text(viewModel.movie.title ?? "Untitled Movie")
                             .font(.title)
                             .fontWeight(.bold)
                             .foregroundColor(.black)
-                        Text("Genre 1, Genre 2, Genre 3") // Replace with actual genres
+                        Text(viewModel.movie.genre ?? "")
                             .font(.subheadline)
                             .foregroundColor(Color.gray)
                     }
@@ -74,7 +74,7 @@ struct MovieDetailView: View {
                             .font(.headline)
                             .fontWeight(.bold)
                             .foregroundColor(.gray)
-                        Text(movie.plot ?? "") 
+                        Text(viewModel.movie.summary ?? "")
                             .font(.body)
                             .foregroundColor(Color.gray.opacity(0.7))
                             .multilineTextAlignment(.leading)
@@ -91,12 +91,13 @@ struct MovieDetailView: View {
                         // Horizontal Scroll View for Additional Ratings
                         ScrollView(.horizontal, showsIndicators: false) {
                             HStack(spacing: 16) {
-                                ForEach(1..<6) { index in
+                                ForEach((viewModel.movie.otherRatings ?? []), id: \.source) { rating in
                                     VStack(alignment: .trailing, spacing: 16) {
-                                        Text("Rating Source \(index)") // Replace with actual rating source
+                                        Text(rating.source)
                                             .font(.subheadline)
                                             .foregroundColor(.gray)
-                                        Text("\(7.0 + Double(index) / 2, specifier: "%.1f")") // Replace with actual rating value
+                                            .frame(height: 72)
+                                        Text(rating.value ?? "")
                                             .font(.headline)
                                             .foregroundColor(Color("DarkSkyBlue"))
                                     }
@@ -115,6 +116,11 @@ struct MovieDetailView: View {
             }
         }
         .background(Color.white.edgesIgnoringSafeArea(.all))
+        .onAppear {
+            Task {
+                await viewModel.loadMovie()
+            }
+        }
     }
 
     // Helper function to calculate poster width
@@ -145,15 +151,10 @@ struct StarRatingView: View {
     var body: some View {
         HStack(spacing: 4) {
             ForEach(0..<5) { index in
-                Image(systemName: index < Int(rating / 2) ? "star.fill" : "star")
+                Image(systemName: index < Int(rating) ? "star.fill" : "star")
                     .foregroundColor(Color("DarkSkyBlue"))
             }
         }
     }
 }
 
-struct MovieDetailsScreenView_Previews: PreviewProvider {
-    static var previews: some View {
-        MovieDetailView(movie: MovieEntity(id: ""))
-    }
-}
