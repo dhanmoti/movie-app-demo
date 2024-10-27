@@ -12,5 +12,10 @@ struct MovieEntity {
     var title: String?
     var summary: String?
     var posterUrl: URL?
+    var year: String?
+    var genre: String?
+    var director: String?
+    var plot: String?
+    var poster: String?
 }
 extension MovieEntity: Hashable {}

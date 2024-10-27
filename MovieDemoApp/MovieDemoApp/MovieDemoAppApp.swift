@@ -14,15 +14,15 @@ struct MovieDemoAppApp: App {
     
     var body: some Scene {
         WindowGroup {
-            if authViewModel.isAuthenticated {
+            //if authViewModel.isAuthenticated {
                 SearchView()
                     .environmentObject(authViewModel)
                     .environmentObject(searchVM)
-            }
-            else {
-                HomeScreen()
-                    .environmentObject(authViewModel)
-            }
+            //}
+           // else {
+              //  HomeScreen()
+                   // .environmentObject(authViewModel)
+          //  }
         }
     }
 }
